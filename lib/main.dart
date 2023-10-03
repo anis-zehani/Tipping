@@ -74,13 +74,13 @@ class _MyHomePageState extends State<MyHomePage> {
     Widget page;
     switch (selectedIndex) {
       case 0:
-        page = GeneratorPage();
+        page = TipsPage();
         break;
       case 1:
-        page = FavoritesPage();
+        page = ScanPage();
         break;
       case 2:
-        page = FavoritesPage();
+        page = SettingsPage();
         break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
@@ -110,10 +110,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     items: [
                       BottomNavigationBarItem(
                         icon: Icon(Icons.currency_exchange_rounded),
-                        label: 'Transactions',
+                        label: 'Tips',
                       ),
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.qr_code_scanner_rounded),
+                        icon: Icon(Icons.qr_code_2),
                         label: 'Scan',
                       ),
                       BottomNavigationBarItem(
@@ -139,12 +139,16 @@ class _MyHomePageState extends State<MyHomePage> {
                     extended: constraints.maxWidth >= 600,
                     destinations: [
                       NavigationRailDestination(
-                        icon: Icon(Icons.home),
-                        label: Text('Home'),
+                        icon: Icon(Icons.currency_exchange_rounded),
+                        label: Text('Tips'),
                       ),
                       NavigationRailDestination(
-                        icon: Icon(Icons.favorite),
-                        label: Text('Favorites'),
+                        icon: Icon(Icons.qr_code_2),
+                        label: Text('Scan'),
+                      ),
+                      NavigationRailDestination(
+                        icon: Icon(Icons.settings),
+                        label: Text('Settings'),
                       ),
                     ],
                     selectedIndex: selectedIndex,
@@ -165,7 +169,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class GeneratorPage extends StatelessWidget {
+class TipsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var appState = context.watch<MyAppState>();
@@ -258,7 +262,7 @@ class BigCard extends StatelessWidget {
   }
 }
 
-class FavoritesPage extends StatelessWidget {
+class ScanPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -266,7 +270,57 @@ class FavoritesPage extends StatelessWidget {
 
     if (appState.favorites.isEmpty) {
       return Center(
-        child: Text('No favorites yet.'),
+        child: Text('No scan yet.'),
+      );
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(30),
+          child: Text('You have '
+              '${appState.favorites.length} favorites:'),
+        ),
+        Expanded(
+          // Make better use of wide windows with a grid.
+          child: GridView(
+            gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+              maxCrossAxisExtent: 400,
+              childAspectRatio: 400 / 80,
+            ),
+            children: [
+              for (var pair in appState.favorites)
+                ListTile(
+                  leading: IconButton(
+                    icon: Icon(Icons.delete_outline, semanticLabel: 'Delete'),
+                    color: theme.colorScheme.primary,
+                    onPressed: () {
+                      appState.removeFavorite(pair);
+                    },
+                  ),
+                  title: Text(
+                    pair.asLowerCase,
+                    semanticsLabel: pair.asPascalCase,
+                  ),
+                ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class SettingsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+    var appState = context.watch<MyAppState>();
+
+    if (appState.favorites.isEmpty) {
+      return Center(
+        child: Text('No settings yet.'),
       );
     }
 
