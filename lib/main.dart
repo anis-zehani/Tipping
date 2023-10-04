@@ -91,15 +91,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         label: 'Settings',
                       ),
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.qr_code_2),
+                        icon: Icon(Icons.add_circle_rounded),
                         label: 'Scan',
                       ),
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.currency_exchange_rounded),
+                        icon: Icon(Icons.shopping_cart_rounded),
                         label: 'Tips',
                       ),
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.perm_identity_rounded),
+                        icon: Icon(Icons.account_circle_rounded),
                         label: 'Profile',
                       ),
                     ],
@@ -130,15 +130,15 @@ class _MyHomePageState extends State<MyHomePage> {
                         label: Text('Settings'),
                       ),
                       NavigationRailDestination(
-                        icon: Icon(Icons.qr_code_2),
+                        icon: Icon(Icons.add_circle_rounded),
                         label: Text('Scan'),
                       ),
                       NavigationRailDestination(
-                        icon: Icon(Icons.currency_exchange_rounded),
+                        icon: Icon(Icons.shopping_cart_rounded),
                         label: Text('Tips'),
                       ),
                       NavigationRailDestination(
-                        icon: Icon(Icons.perm_identity_rounded),
+                        icon: Icon(Icons.account_circle_rounded),
                         label: Text('Profile'),
                       ),
                     ],
