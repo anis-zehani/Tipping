@@ -1,6 +1,4 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
-
-import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -28,37 +26,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyAppState extends ChangeNotifier {
-  var current = WordPair.random();
-  var history = <WordPair>[];
-
-  GlobalKey? historyListKey;
-
-  void getNext() {
-    history.insert(0, current);
-    var animatedList = historyListKey?.currentState as AnimatedListState?;
-    animatedList?.insertItem(0);
-    current = WordPair.random();
-    notifyListeners();
-  }
-
-  var favorites = <WordPair>[];
-
-  void toggleFavorite([WordPair? pair]) {
-    pair = pair ?? current;
-    if (favorites.contains(pair)) {
-      favorites.remove(pair);
-    } else {
-      favorites.add(pair);
-    }
-    notifyListeners();
-  }
-
-  void removeFavorite(WordPair pair) {
-    favorites.remove(pair);
-    notifyListeners();
-  }
-}
+class MyAppState extends ChangeNotifier {}
 
 class MyHomePage extends StatefulWidget {
   @override
@@ -66,7 +34,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var selectedIndex = 1;
+  var selectedIndex = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -75,18 +43,23 @@ class _MyHomePageState extends State<MyHomePage> {
     Widget page;
     switch (selectedIndex) {
       case 0:
-        page = TipsPage();
+        page = HomePage();
         break;
       case 1:
-        page = ScanPage();
-        break;
-      case 2:
         page = SettingsPage();
         break;
+      case 2:
+        page = ScanPage();
+        break;
+      case 3:
+        page = TipsPage();
+        break;
+      case 4:
+        page = ProfilePage();
+        break;
       default:
-        throw UnimplementedError('no widget for $selectedIndex');
+        throw UnimplementedError('No widget for $selectedIndex');
     }
-
     // The container for the current page, with its background color
     // and subtle switching animation.
     var mainArea = ColoredBox(
@@ -110,16 +83,24 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: BottomNavigationBar(
                     items: [
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.currency_exchange_rounded),
-                        label: 'Tips',
+                        icon: Icon(Icons.home_filled),
+                        label: 'Home',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.settings),
+                        label: 'Settings',
                       ),
                       BottomNavigationBarItem(
                         icon: Icon(Icons.qr_code_2),
                         label: 'Scan',
                       ),
                       BottomNavigationBarItem(
-                        icon: Icon(Icons.settings),
-                        label: 'Settings',
+                        icon: Icon(Icons.currency_exchange_rounded),
+                        label: 'Tips',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.perm_identity_rounded),
+                        label: 'Profile',
                       ),
                     ],
                     currentIndex: selectedIndex,
@@ -128,6 +109,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         selectedIndex = value;
                       });
                     },
+                    type: BottomNavigationBarType.fixed,
                   ),
                 )
               ],
@@ -140,16 +122,24 @@ class _MyHomePageState extends State<MyHomePage> {
                     extended: constraints.maxWidth >= 600,
                     destinations: [
                       NavigationRailDestination(
-                        icon: Icon(Icons.currency_exchange_rounded),
-                        label: Text('Tips'),
+                        icon: Icon(Icons.home_filled),
+                        label: Text('Home'),
+                      ),
+                      NavigationRailDestination(
+                        icon: Icon(Icons.settings),
+                        label: Text('Settings'),
                       ),
                       NavigationRailDestination(
                         icon: Icon(Icons.qr_code_2),
                         label: Text('Scan'),
                       ),
                       NavigationRailDestination(
-                        icon: Icon(Icons.settings),
-                        label: Text('Settings'),
+                        icon: Icon(Icons.currency_exchange_rounded),
+                        label: Text('Tips'),
+                      ),
+                      NavigationRailDestination(
+                        icon: Icon(Icons.perm_identity_rounded),
+                        label: Text('Profile'),
                       ),
                     ],
                     selectedIndex: selectedIndex,
@@ -170,13 +160,24 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 }
 
-class TipsPage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //var theme = Theme.of(context);
     //var appState = context.watch<MyAppState>();
     return Center(
-      child: Text('Tips'),
+      child: Text('Home'),
+    );
+  }
+}
+
+class SettingsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    //var theme = Theme.of(context);
+    //var appState = context.watch<MyAppState>();
+    return Center(
+      child: Text('Settings'),
     );
   }
 }
@@ -192,13 +193,24 @@ class ScanPage extends StatelessWidget {
   }
 }
 
-class SettingsPage extends StatelessWidget {
+class TipsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //var theme = Theme.of(context);
     //var appState = context.watch<MyAppState>();
     return Center(
-      child: Text('Settings'),
+      child: Text('Tips'),
+    );
+  }
+}
+
+class ProfilePage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    //var theme = Theme.of(context);
+    //var appState = context.watch<MyAppState>();
+    return Center(
+      child: Text('Profile'),
     );
   }
 }
