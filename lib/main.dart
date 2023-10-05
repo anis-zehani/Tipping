@@ -2,6 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'scan.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -29,6 +31,8 @@ class MyApp extends StatelessWidget {
 class MyAppState extends ChangeNotifier {}
 
 class MyHomePage extends StatefulWidget {
+  const MyHomePage({Key? key}) : super(key: key);
+
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -161,6 +165,8 @@ class _MyHomePageState extends State<MyHomePage> {
 }
 
 class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     //var theme = Theme.of(context);
@@ -172,6 +178,8 @@ class HomePage extends StatelessWidget {
 }
 
 class SettingsPage extends StatelessWidget {
+  const SettingsPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     //var theme = Theme.of(context);
@@ -182,7 +190,7 @@ class SettingsPage extends StatelessWidget {
   }
 }
 
-class ScanPage extends StatelessWidget {
+/*class ScanPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //var theme = Theme.of(context);
@@ -191,9 +199,11 @@ class ScanPage extends StatelessWidget {
       child: Text('Scan'),
     );
   }
-}
+}*/
 
 class TipsPage extends StatelessWidget {
+  const TipsPage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     //var theme = Theme.of(context);
@@ -205,6 +215,8 @@ class TipsPage extends StatelessWidget {
 }
 
 class ProfilePage extends StatelessWidget {
+  const ProfilePage({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     //var theme = Theme.of(context);
