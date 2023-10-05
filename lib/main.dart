@@ -61,6 +61,15 @@ class _MyHomePageState extends State<MyHomePage> {
       case 4:
         page = ProfilePage();
         break;
+      case 5:
+        page = PaymentsAndPayoutsPage();
+        break;
+      case 6:
+        page = SwitchToReceivingTipsPage();
+        break;
+      case 7:
+        page = LogoutPage();
+        break;
       default:
         throw UnimplementedError('No widget for $selectedIndex');
     }
@@ -75,6 +84,92 @@ class _MyHomePageState extends State<MyHomePage> {
     );
 
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(255, 39, 89, 131),
+        title: Text(
+          'US Tipping',
+          style: TextStyle(
+              color: Color.fromARGB(255, 255, 255, 255),
+              fontWeight: FontWeight.w600,
+              fontSize: 16),
+        ),
+        centerTitle: true,
+        iconTheme: IconThemeData(color: Color.fromARGB(255, 255, 255, 255)),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          // Important: Remove any padding from the ListView.
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 249, 250, 250),
+              ),
+              child: Text('US Tipping'),
+            ),
+            ListTile(
+              title: const Text('Home'),
+              selected: selectedIndex == 0,
+              onTap: () {
+                setState(() {
+                  selectedIndex = 0;
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('My profile'),
+              selected: selectedIndex == 4,
+              onTap: () {
+                setState(() {
+                  selectedIndex = 4;
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('My transactions'),
+              selected: selectedIndex == 3,
+              onTap: () {
+                setState(() {
+                  selectedIndex = 3;
+                });
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Payments & payouts'),
+              //selected: selectedIndex == 5,
+              onTap: () {
+                /*setState(() {
+                  selectedIndex = 5;
+                });*/
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Switch to receiving tips'),
+              //selected: selectedIndex == 6,
+              onTap: () {
+                /*setState(() {
+                  selectedIndex = 6;
+                });*/
+                Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              title: const Text('Logout'),
+              //selected: selectedIndex == 7,
+              onTap: () {
+                /*setState(() {
+                  selectedIndex = 7;
+                });*/
+                Navigator.pop(context);
+              },
+            ),
+          ],
+        ),
+      ),
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (constraints.maxWidth < 450) {
@@ -223,6 +318,45 @@ class ProfilePage extends StatelessWidget {
     //var appState = context.watch<MyAppState>();
     return Center(
       child: Text('Profile'),
+    );
+  }
+}
+
+class PaymentsAndPayoutsPage extends StatelessWidget {
+  const PaymentsAndPayoutsPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    //var theme = Theme.of(context);
+    //var appState = context.watch<MyAppState>();
+    return Center(
+      child: Text('Payments & payouts'),
+    );
+  }
+}
+
+class SwitchToReceivingTipsPage extends StatelessWidget {
+  const SwitchToReceivingTipsPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    //var theme = Theme.of(context);
+    //var appState = context.watch<MyAppState>();
+    return Center(
+      child: Text('Switch to receiving tips'),
+    );
+  }
+}
+
+class LogoutPage extends StatelessWidget {
+  const LogoutPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    //var theme = Theme.of(context);
+    //var appState = context.watch<MyAppState>();
+    return Center(
+      child: Text('Logout'),
     );
   }
 }

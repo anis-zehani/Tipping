@@ -11,15 +11,36 @@ class ScanPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('QR code scanner')),
+      //appBar: AppBar(title: const Text('QR code scanner')),
       body: Center(
-        child: ElevatedButton(
-          onPressed: () {
-            Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const QRViewTipping(),
-            ));
-          },
-          child: const Text('New scan'),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            Text(
+              'Scan a worker\'s QR code',
+              style: Theme.of(context).textTheme.titleLarge,
+            ),
+            IconButton(
+              iconSize: 250.0,
+              icon: const Icon(Icons.qr_code_2),
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const QRViewTipping(),
+                ));
+              },
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const QRViewTipping(),
+                ));
+              },
+              child: Text(
+                'Click to scan',
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+            ),
+          ],
         ),
       ),
     );
