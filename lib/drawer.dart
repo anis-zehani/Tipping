@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tipping/home.dart';
-import 'package:tipping/profile.dart';
+import 'package:tipping/profile_consumer.dart';
 
 import 'logout.dart';
 import 'payments.dart';
@@ -46,7 +46,7 @@ class DrawerPage extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const ProfilePage(),
+                    builder: (context) => const ProfileConsumerPage(),
                   ),
                 );
               },

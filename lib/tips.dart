@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'appbar.dart';
+import 'app_bar.dart';
 import 'drawer.dart';
 
 class TipsPage extends StatelessWidget {
@@ -9,6 +9,7 @@ class TipsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(

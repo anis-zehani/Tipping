@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-import 'appbar.dart';
+import 'app_bar.dart';
 import 'drawer.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key? key}) : super(key: key);
+class ProfileWorkerPage extends StatelessWidget {
+  const ProfileWorkerPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
@@ -22,7 +23,7 @@ class ProfilePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Text(
-                'Profile',
+                'Profile Worker',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ],

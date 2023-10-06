@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-import 'appbar.dart';
+import 'app_bar.dart';
 import 'drawer.dart';
 
 class ScanPage extends StatelessWidget {
@@ -14,6 +14,7 @@ class ScanPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
         colorScheme: ColorScheme.fromSeed(
@@ -26,12 +27,15 @@ class ScanPage extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Text(
+              const Text(
                 'Scan a worker\'s QR code',
-                style: Theme.of(context).textTheme.titleLarge,
+                style: TextStyle(
+                    color: Color.fromARGB(255, 2, 2, 2),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20),
               ),
               IconButton(
-                iconSize: 300.0,
+                iconSize: 350.0,
                 icon: const Icon(Icons.qr_code_2),
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
@@ -84,6 +88,7 @@ class _QRViewTippingState extends State<QRViewTipping> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: Column(
           children: <Widget>[

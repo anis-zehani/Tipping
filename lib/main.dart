@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => MyAppState(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
           useMaterial3: true,
           colorScheme:
@@ -60,8 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
         throw UnimplementedError('No widget for $selectedIndexNavigationBar');
     }
 
-    // The container for the current page, with its background color
-    // and subtle switching animation.
+    // The container for the current page, with its background color and subtle switching animation.
     var mainArea = ColoredBox(
       color: colorScheme.surfaceVariant,
       child: AnimatedSwitcher(
@@ -70,77 +70,78 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
 
-    return Scaffold(
-      //appBar: AppBarPage(),
-      //drawer: DrawerPage(),
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          if (constraints.maxWidth < 450) {
-            // Use a more mobile-friendly layout with BottomNavigationBar
-            // on narrow screens.
-            return Column(
-              children: [
-                Expanded(child: mainArea),
-                SafeArea(
-                  child: BottomNavigationBar(
-                    items: [
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.home_filled),
-                        label: 'Home',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.add_circle_rounded),
-                        label: 'Scan',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.list_rounded),
-                        label: 'Tips',
-                      ),
-                    ],
-                    currentIndex: selectedIndexNavigationBar,
-                    onTap: (value) {
-                      setState(() {
-                        selectedIndexNavigationBar = value;
-                      });
-                    },
-                    type: BottomNavigationBarType.fixed,
+    return SafeArea(
+      child: Scaffold(
+        //appBar: AppBarPage(),
+        //drawer: DrawerPage(),
+        body: LayoutBuilder(
+          builder: (context, constraints) {
+            if (constraints.maxWidth < 450) {
+              // Use a more mobile-friendly layout with BottomNavigationBar on narrow screens.
+              return Column(
+                children: [
+                  Expanded(child: mainArea),
+                  SafeArea(
+                    child: BottomNavigationBar(
+                      items: [
+                        BottomNavigationBarItem(
+                          icon: Icon(Icons.home_filled),
+                          label: 'Home',
+                        ),
+                        BottomNavigationBarItem(
+                          icon: Icon(Icons.add_circle_rounded),
+                          label: 'Scan',
+                        ),
+                        BottomNavigationBarItem(
+                          icon: Icon(Icons.list_rounded),
+                          label: 'Tips',
+                        ),
+                      ],
+                      currentIndex: selectedIndexNavigationBar,
+                      onTap: (value) {
+                        setState(() {
+                          selectedIndexNavigationBar = value;
+                        });
+                      },
+                      type: BottomNavigationBarType.fixed,
+                    ),
+                  )
+                ],
+              );
+            } else {
+              return Row(
+                children: [
+                  SafeArea(
+                    child: NavigationRail(
+                      extended: constraints.maxWidth >= 600,
+                      destinations: [
+                        NavigationRailDestination(
+                          icon: Icon(Icons.home_filled),
+                          label: Text('Home'),
+                        ),
+                        NavigationRailDestination(
+                          icon: Icon(Icons.add_circle_rounded),
+                          label: Text('Scan'),
+                        ),
+                        NavigationRailDestination(
+                          icon: Icon(Icons.list_rounded),
+                          label: Text('Tips'),
+                        ),
+                      ],
+                      selectedIndex: selectedIndexNavigationBar,
+                      onDestinationSelected: (value) {
+                        setState(() {
+                          selectedIndexNavigationBar = value;
+                        });
+                      },
+                    ),
                   ),
-                )
-              ],
-            );
-          } else {
-            return Row(
-              children: [
-                SafeArea(
-                  child: NavigationRail(
-                    extended: constraints.maxWidth >= 600,
-                    destinations: [
-                      NavigationRailDestination(
-                        icon: Icon(Icons.home_filled),
-                        label: Text('Home'),
-                      ),
-                      NavigationRailDestination(
-                        icon: Icon(Icons.add_circle_rounded),
-                        label: Text('Scan'),
-                      ),
-                      NavigationRailDestination(
-                        icon: Icon(Icons.list_rounded),
-                        label: Text('Tips'),
-                      ),
-                    ],
-                    selectedIndex: selectedIndexNavigationBar,
-                    onDestinationSelected: (value) {
-                      setState(() {
-                        selectedIndexNavigationBar = value;
-                      });
-                    },
-                  ),
-                ),
-                Expanded(child: mainArea),
-              ],
-            );
-          }
-        },
+                  Expanded(child: mainArea),
+                ],
+              );
+            }
+          },
+        ),
       ),
     );
   }

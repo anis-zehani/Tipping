@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'app_bar.dart';
 import 'drawer.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class ProfileConsumerPage extends StatelessWidget {
+  const ProfileConsumerPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Text(
-                'Home',
+                'Profile Consumer',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ],
