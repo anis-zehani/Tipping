@@ -1,15 +1,15 @@
 import 'dart:developer';
 import 'dart:io';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
 import 'app_bar.dart';
 import 'drawer.dart';
+import 'tip_worker.dart';
 
-class ScanPage extends StatelessWidget {
-  const ScanPage({Key? key}) : super(key: key);
+class ScanWorkerPage extends StatelessWidget {
+  const ScanWorkerPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -74,8 +74,7 @@ class _QRViewTippingState extends State<QRViewTipping> {
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
 
-  // In order to get hot reload to work we need to pause the camera if the platform
-  // is android, or resume the camera if the platform is iOS.
+  // In order to get hot reload to work we need to pause the camera if the platform is android, or resume the camera if the platform is iOS.
   @override
   void reassemble() {
     super.reassemble();
@@ -89,7 +88,14 @@ class _QRViewTippingState extends State<QRViewTipping> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color.fromARGB(255, 35, 75, 121)),
+      ),
       home: Scaffold(
+        appBar: const AppBarPage(),
+        drawer: const DrawerPage(),
         body: Column(
           children: <Widget>[
             Expanded(flex: 4, child: _buildQrView(context)),
@@ -102,7 +108,7 @@ class _QRViewTippingState extends State<QRViewTipping> {
                   children: <Widget>[
                     if (result != null)
                       Text(
-                        'Barcode Type: ${describeEnum(result!.format)}   Data: ${result!.code}',
+                        'Data = ${result!.code}',
                         style: Theme.of(context).textTheme.titleMedium,
                       ),
                     Row(
@@ -155,8 +161,7 @@ class _QRViewTippingState extends State<QRViewTipping> {
             MediaQuery.of(context).size.height < 400)
         ? 150.0
         : 300.0;
-    // To ensure the Scanner view is properly sizes after rotation
-    // we need to listen for Flutter SizeChanged notification and update controller
+    // To ensure the Scanner view is properly sizes after rotation we need to listen for Flutter SizeChanged notification and update controller
     return QRView(
       key: qrKey,
       onQRViewCreated: _onQRViewCreated,
@@ -175,9 +180,19 @@ class _QRViewTippingState extends State<QRViewTipping> {
       this.controller = controller;
     });
     controller.scannedDataStream.listen((scanData) {
+      controller.pauseCamera();
+      String qrCode = scanData.code.toString();
+
       setState(() {
         result = scanData;
       });
+
+      Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      TipWorkerPage(qrCode: qrCode)))
+          .then((value) => controller.resumeCamera());
     });
   }
 

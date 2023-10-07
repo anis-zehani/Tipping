@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'home.dart';
-import 'scan.dart';
-import 'tips.dart';
+import 'scan_worker.dart';
+import 'tips_list.dart';
 
 void main() {
   runApp(MyApp());
@@ -52,10 +52,10 @@ class _MyHomePageState extends State<MyHomePage> {
         page = HomePage();
         break;
       case 1:
-        page = ScanPage();
+        page = ScanWorkerPage();
         break;
       case 2:
-        page = TipsPage();
+        page = TipsListPage();
         break;
       default:
         throw UnimplementedError('No widget for $selectedIndexNavigationBar');
@@ -72,8 +72,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
     return SafeArea(
       child: Scaffold(
-        //appBar: AppBarPage(),
-        //drawer: DrawerPage(),
         body: LayoutBuilder(
           builder: (context, constraints) {
             if (constraints.maxWidth < 450) {

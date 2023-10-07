@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'app_bar.dart';
 import 'drawer.dart';
 
-class TipsPage extends StatelessWidget {
-  const TipsPage({Key? key}) : super(key: key);
+class TipsListPage extends StatelessWidget {
+  const TipsListPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class TipsPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Text(
-                'Tips',
+                'Tips List',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ],

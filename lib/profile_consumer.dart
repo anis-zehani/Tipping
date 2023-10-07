@@ -23,7 +23,7 @@ class ProfileConsumerPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Text(
-                'Profile Consumer',
+                'Consumer Profile',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ],

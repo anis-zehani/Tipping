@@ -3,14 +3,19 @@ import 'package:tipping/home.dart';
 import 'package:tipping/profile_consumer.dart';
 
 import 'logout.dart';
-import 'payments.dart';
-import 'switch.dart';
-import 'tips.dart';
+import 'payments_and_payouts.dart';
+import 'switch_to_receiving_tips.dart';
+import 'tips_list.dart';
 
-class DrawerPage extends StatelessWidget {
+class DrawerPage extends StatefulWidget {
   const DrawerPage({Key? key}) : super(key: key);
 
-  final selectedIndexDrawer = 0;
+  @override
+  State<DrawerPage> createState() => _DrawerPageState();
+}
+
+class _DrawerPageState extends State<DrawerPage> {
+  var _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -31,19 +36,24 @@ class DrawerPage extends StatelessWidget {
             ListTile(
               title: const Text('Home'),
               leading: const Icon(Icons.home_filled),
-              //selected: selectedIndexDrawer == 0,
+              selected: _selectedIndex == 0,
               onTap: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (BuildContext context) => const HomePage()));
+                setState(() {
+                  _selectedIndex = 0;
+                });
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const HomePage(),
+                ));
               },
             ),
             ListTile(
               title: const Text('My profile'),
               leading: const Icon(Icons.account_circle_rounded),
-              //selected: selectedIndexDrawer == 1,
+              selected: _selectedIndex == 1,
               onTap: () {
+                setState(() {
+                  _selectedIndex = 1;
+                });
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => const ProfileConsumerPage(),
@@ -54,11 +64,14 @@ class DrawerPage extends StatelessWidget {
             ListTile(
               title: const Text('My tips'),
               leading: const Icon(Icons.list_rounded),
-              //selected: selectedIndexDrawer == 2,
+              selected: _selectedIndex == 2,
               onTap: () {
+                setState(() {
+                  _selectedIndex = 2;
+                });
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const TipsPage(),
+                    builder: (context) => const TipsListPage(),
                   ),
                 );
               },
@@ -66,8 +79,11 @@ class DrawerPage extends StatelessWidget {
             ListTile(
               title: const Text('Payments & payouts'),
               leading: const Icon(Icons.payment_rounded),
-              //selected: selectedIndexDrawer == 3,
+              selected: _selectedIndex == 3,
               onTap: () {
+                setState(() {
+                  _selectedIndex = 3;
+                });
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => const PaymentsAndPayoutsPage(),
@@ -78,8 +94,11 @@ class DrawerPage extends StatelessWidget {
             ListTile(
               title: const Text('Switch to receiving tips'),
               leading: const Icon(Icons.switch_account),
-              //selected: selectedIndexDrawer == 4,
+              selected: _selectedIndex == 4,
               onTap: () {
+                setState(() {
+                  _selectedIndex = 4;
+                });
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => const SwitchToReceivingTipsPage(),
@@ -90,8 +109,11 @@ class DrawerPage extends StatelessWidget {
             ListTile(
               title: const Text('Logout'),
               leading: const Icon(Icons.logout_rounded),
-              //selected: selectedIndexDrawer == 5,
+              selected: _selectedIndex == 5,
               onTap: () {
+                setState(() {
+                  _selectedIndex = 5;
+                });
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => const LogoutPage(),

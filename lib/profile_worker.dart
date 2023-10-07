@@ -23,7 +23,7 @@ class ProfileWorkerPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               Text(
-                'Profile Worker',
+                'Worker Profile',
                 style: Theme.of(context).textTheme.titleLarge,
               ),
             ],
