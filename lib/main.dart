@@ -74,70 +74,36 @@ class _MyHomePageState extends State<MyHomePage> {
       child: Scaffold(
         body: LayoutBuilder(
           builder: (context, constraints) {
-            if (constraints.maxWidth < 450) {
-              // Use a more mobile-friendly layout with BottomNavigationBar on narrow screens.
-              return Column(
-                children: [
-                  Expanded(child: mainArea),
-                  SafeArea(
-                    child: BottomNavigationBar(
-                      items: [
-                        BottomNavigationBarItem(
-                          icon: Icon(Icons.home_filled),
-                          label: 'Home',
-                        ),
-                        BottomNavigationBarItem(
-                          icon: Icon(Icons.add_circle_rounded),
-                          label: 'Scan',
-                        ),
-                        BottomNavigationBarItem(
-                          icon: Icon(Icons.list_rounded),
-                          label: 'Tips',
-                        ),
-                      ],
-                      currentIndex: selectedIndexNavigationBar,
-                      onTap: (value) {
-                        setState(() {
-                          selectedIndexNavigationBar = value;
-                        });
-                      },
-                      type: BottomNavigationBarType.fixed,
-                    ),
-                  )
-                ],
-              );
-            } else {
-              return Row(
-                children: [
-                  SafeArea(
-                    child: NavigationRail(
-                      extended: constraints.maxWidth >= 600,
-                      destinations: [
-                        NavigationRailDestination(
-                          icon: Icon(Icons.home_filled),
-                          label: Text('Home'),
-                        ),
-                        NavigationRailDestination(
-                          icon: Icon(Icons.add_circle_rounded),
-                          label: Text('Scan'),
-                        ),
-                        NavigationRailDestination(
-                          icon: Icon(Icons.list_rounded),
-                          label: Text('Tips'),
-                        ),
-                      ],
-                      selectedIndex: selectedIndexNavigationBar,
-                      onDestinationSelected: (value) {
-                        setState(() {
-                          selectedIndexNavigationBar = value;
-                        });
-                      },
-                    ),
+            return Column(
+              children: [
+                Expanded(child: mainArea),
+                SafeArea(
+                  child: BottomNavigationBar(
+                    items: [
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.home_filled),
+                        label: 'Home',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.add_circle_rounded),
+                        label: 'Scan',
+                      ),
+                      BottomNavigationBarItem(
+                        icon: Icon(Icons.list_rounded),
+                        label: 'Tips',
+                      ),
+                    ],
+                    currentIndex: selectedIndexNavigationBar,
+                    onTap: (value) {
+                      setState(() {
+                        selectedIndexNavigationBar = value;
+                      });
+                    },
+                    type: BottomNavigationBarType.fixed,
                   ),
-                  Expanded(child: mainArea),
-                ],
-              );
-            }
+                )
+              ],
+            );
           },
         ),
       ),
