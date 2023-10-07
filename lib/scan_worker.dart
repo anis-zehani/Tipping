@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
@@ -190,8 +189,7 @@ class _QRViewTippingState extends State<QRViewTipping> {
       Navigator.pushReplacement(
               context,
               MaterialPageRoute(
-                  builder: (BuildContext context) =>
-                      TipWorkerPage(qrCode: qrCode)))
+                  builder: (context) => TipWorkerPage(qrCode: qrCode)))
           .then((value) => controller.resumeCamera());
     });
   }
