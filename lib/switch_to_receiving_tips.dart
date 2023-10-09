@@ -18,13 +18,14 @@ class SwitchToReceivingTipsPage extends StatelessWidget {
       home: Scaffold(
         appBar: AppBarPage(title: 'Switch to receiving tips'),
         drawer: const DrawerPage(),
-        body: Center(
+        body: const Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              Text(
-                'Switch to receiving tips',
-                style: Theme.of(context).textTheme.titleLarge,
+              CircleAvatar(
+                radius: 150,
+                backgroundImage: NetworkImage(
+                    'https://cdn.iconscout.com/icon/premium/png-256-thumb/coming-soon-2367904-1976493.png'),
               ),
             ],
           ),

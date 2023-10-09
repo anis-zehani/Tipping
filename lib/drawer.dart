@@ -16,8 +16,6 @@ class DrawerPage extends StatefulWidget {
 }
 
 class _DrawerPageState extends State<DrawerPage> {
-  //var _selectedIndex = 0;
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,11 +35,7 @@ class _DrawerPageState extends State<DrawerPage> {
             ListTile(
               title: const Text('Home'),
               leading: const Icon(Icons.home_filled),
-              //selected: _selectedIndex == 0,
               onTap: () {
-                /*setState(() {
-                  _selectedIndex = 0;
-                });*/
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) => const HomePage(),
                 ));
@@ -50,11 +44,7 @@ class _DrawerPageState extends State<DrawerPage> {
             ListTile(
               title: const Text('My profile'),
               leading: const Icon(Icons.account_circle_rounded),
-              //selected: _selectedIndex == 1,
               onTap: () {
-                /*setState(() {
-                  _selectedIndex = 1;
-                });*/
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => const ProfileConsumerPage(),
@@ -65,11 +55,7 @@ class _DrawerPageState extends State<DrawerPage> {
             ListTile(
               title: const Text('Pending tips'),
               leading: const Icon(Icons.list_rounded),
-              //selected: _selectedIndex == 2,
               onTap: () {
-                /*setState(() {
-                  _selectedIndex = 2;
-                });*/
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => const TipsPendingPage(),
@@ -80,11 +66,7 @@ class _DrawerPageState extends State<DrawerPage> {
             ListTile(
               title: const Text('Transaction history'),
               leading: const Icon(Icons.history_rounded),
-              //selected: _selectedIndex == 3,
               onTap: () {
-                /*setState(() {
-                  _selectedIndex = 3;
-                });*/
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => TipsListPage(),
@@ -95,11 +77,7 @@ class _DrawerPageState extends State<DrawerPage> {
             ListTile(
               title: const Text('Payments & payouts'),
               leading: const Icon(Icons.payment_rounded),
-              //selected: _selectedIndex == 4,
               onTap: () {
-                /*setState(() {
-                  _selectedIndex = 4;
-                });*/
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => const PaymentsAndPayoutsPage(),
@@ -110,11 +88,7 @@ class _DrawerPageState extends State<DrawerPage> {
             ListTile(
               title: const Text('Switch to receiving tips'),
               leading: const Icon(Icons.switch_account),
-              //selected: _selectedIndex == 5,
               onTap: () {
-                /*setState(() {
-                  _selectedIndex = 5;
-                });*/
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => const SwitchToReceivingTipsPage(),
@@ -125,11 +99,7 @@ class _DrawerPageState extends State<DrawerPage> {
             ListTile(
               title: const Text('Logout'),
               leading: const Icon(Icons.logout_rounded),
-              //selected: _selectedIndex == 6,
               onTap: () {
-                /*setState(() {
-                  _selectedIndex = 6;
-                });*/
                 Navigator.of(context).push(
                   MaterialPageRoute(
                     builder: (context) => const LogoutPage(),

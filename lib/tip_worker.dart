@@ -4,9 +4,22 @@ import 'package:flutter/services.dart';
 import 'app_bar.dart';
 import 'drawer.dart';
 
-class TipWorkerPage extends StatelessWidget {
+class TipWorkerPage extends StatefulWidget {
   final String qrCode;
   const TipWorkerPage({super.key, required this.qrCode});
+
+  @override
+  State<TipWorkerPage> createState() => _TipWorkerPageState();
+}
+
+class _TipWorkerPageState extends State<TipWorkerPage> {
+  final myController = TextEditingController(text: "0");
+
+  @override
+  void dispose() {
+    myController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,14 +93,20 @@ class TipWorkerPage extends StatelessWidget {
                   IconButton(
                     iconSize: 60.0,
                     icon: const Icon(Icons.remove_circle_rounded),
-                    onPressed: () {},
+                    onPressed: () {
+                      var value = double.parse(myController.text);
+                      if (value >= 0.1) {
+                        myController.text = (value - 0.1).toStringAsFixed(2);
+                      }
+                    },
                   ),
                   SizedBox(
-                    width: 100,
+                    width: 200,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TextFormField(
+                        TextField(
+                          controller: myController,
                           style: const TextStyle(
                               height: 1,
                               fontWeight: FontWeight.w400,
@@ -95,7 +114,6 @@ class TipWorkerPage extends StatelessWidget {
                               color: Color.fromARGB(255, 35, 75, 121)),
                           textAlign: TextAlign.center,
                           textAlignVertical: TextAlignVertical.center,
-                          initialValue: '0',
                           decoration: InputDecoration(
                             hintText: '0',
                             border: OutlineInputBorder(
@@ -114,7 +132,10 @@ class TipWorkerPage extends StatelessWidget {
                   IconButton(
                     iconSize: 60.0,
                     icon: const Icon(Icons.add_circle_rounded),
-                    onPressed: () {},
+                    onPressed: () {
+                      var value = double.parse(myController.text);
+                      myController.text = (value + 0.1).toStringAsFixed(2);
+                    },
                   ),
                 ],
               ),
@@ -133,7 +154,61 @@ class TipWorkerPage extends StatelessWidget {
                     ),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      var value = double.parse(myController.text);
+                      if (value >= 0.1) {
+                        Widget cancelButton = ElevatedButton(
+                          child: const Text("Cancel"),
+                          onPressed: () {
+                            //Navigator.of(context).pop();
+                          },
+                        );
+                        Widget continueButton = ElevatedButton(
+                          child: const Text("Continue"),
+                          onPressed: () {
+                            //Navigator.of(context).pop();
+                          },
+                        );
+                        // set up the AlertDialog
+                        AlertDialog alert = AlertDialog(
+                          title: const Text("Confirmation"),
+                          content: Text(
+                              'You will pay ${myController.text} \$, do you confirm ?'),
+                          actions: [
+                            cancelButton,
+                            continueButton,
+                          ],
+                        );
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return alert;
+                          },
+                        );
+                      } else {
+                        Widget okButton = ElevatedButton(
+                          child: const Text("OK"),
+                          onPressed: () {
+                            //Navigator.of(context).pop();
+                          },
+                        );
+                        // set up the AlertDialog
+                        AlertDialog alert = AlertDialog(
+                          title: const Text("Error"),
+                          content: const Text(
+                              "Please enter an amount greater than zero"),
+                          actions: [
+                            okButton,
+                          ],
+                        );
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return alert;
+                          },
+                        );
+                      }
+                    },
                     child: Text(
                       'Pay now',
                       style: Theme.of(context).textTheme.titleMedium,

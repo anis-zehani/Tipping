@@ -41,15 +41,23 @@ class PaymentsAndPayoutsPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(Icons.payment),
+                    Icon(
+                      Icons.payment,
+                      color: Color.fromARGB(255, 16, 153, 23),
+                      size: 30.0,
+                    ),
                     Text(
                       'Payments methods',
                       style: TextStyle(
                           color: Color.fromARGB(255, 2, 2, 2),
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16),
                     ),
-                    Icon(Icons.chevron_right),
+                    Icon(
+                      Icons.chevron_right,
+                      color: Color.fromARGB(255, 16, 153, 23),
+                      size: 50.0,
+                    ),
                   ],
                 ),
                 SizedBox(height: 200),
@@ -76,15 +84,23 @@ class PaymentsAndPayoutsPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Icon(Icons.account_balance),
+                    Icon(
+                      Icons.account_balance,
+                      color: Color.fromARGB(255, 16, 153, 23),
+                      size: 30.0,
+                    ),
                     Text(
                       'Payout methods',
                       style: TextStyle(
                           color: Color.fromARGB(255, 2, 2, 2),
-                          fontWeight: FontWeight.w400,
-                          fontSize: 18),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16),
                     ),
-                    Icon(Icons.chevron_right),
+                    Icon(
+                      Icons.chevron_right,
+                      color: Color.fromARGB(255, 16, 153, 23),
+                      size: 50.0,
+                    ),
                   ],
                 ),
               ],

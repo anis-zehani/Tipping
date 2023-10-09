@@ -26,6 +26,13 @@ class MyApp extends StatelessWidget {
               ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 35, 75, 121)),
         ),
         home: MyHomePage(),
+        routes: {
+          // When navigating to the "/" route, build the FirstScreen widget.
+          "/HomePage": (final context) => const HomePage(),
+          // When navigating to the "/second" route, build the SecondScreen widget.
+          "/ScanWorkerPage": (final context) => const ScanWorkerPage(),
+          "/TipsPendingPage": (final context) => const TipsPendingPage(),
+        },
       ),
     );
   }
@@ -91,18 +98,13 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Color.fromARGB(255, 255, 255, 255),
         handleAndroidBackButtonPress: true,
         resizeToAvoidBottomInset: true,
-        stateManagement: true,
         hideNavigationBarWhenKeyboardShows: true,
         decoration: NavBarDecoration(
           borderRadius: BorderRadius.circular(0.0),
         ),
+        stateManagement: true,
         popAllScreensOnTapOfSelectedTab: true,
         popActionScreens: PopActionScreensType.all,
-        itemAnimationProperties: ItemAnimationProperties(
-          // Navigation Bar's items animation properties.
-          duration: Duration(milliseconds: 200),
-          curve: Curves.ease,
-        ),
         navBarStyle: NavBarStyle.style15,
       ),
     );

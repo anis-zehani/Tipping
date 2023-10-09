@@ -27,7 +27,7 @@ class ProfileConsumerPage extends StatelessWidget {
               children: <Widget>[
                 SizedBox(height: 50),
                 Text(
-                  'Paul Graham',
+                  'Anis Zehani',
                   style: TextStyle(
                       color: Color.fromARGB(255, 2, 2, 2),
                       fontWeight: FontWeight.w600,
@@ -37,7 +37,7 @@ class ProfileConsumerPage extends StatelessWidget {
                 CircleAvatar(
                   radius: 70,
                   backgroundImage: NetworkImage(
-                      'https://pbs.twimg.com/profile_images/1824002576/pg-railsconf_400x400.jpg'),
+                      'https://pbs.twimg.com/profile_images/1630389794806157313/AFcZmyjf_400x400.jpg'),
                 ),
                 Divider(
                   height: 20,
