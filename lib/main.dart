@@ -1,4 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -40,72 +41,69 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var selectedIndexNavigationBar = 1;
+  final PersistentTabController _controller =
+      PersistentTabController(initialIndex: 1);
+
+//Screens for each nav items.
+  List<Widget> _navScreens() {
+    return [
+      HomePage(),
+      ScanWorkerPage(),
+      TipsPendingPage(),
+    ];
+  }
+
+  List<PersistentBottomNavBarItem> _navBarsItems() {
+    return [
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.home_filled),
+        title: ("Home"),
+        activeColorPrimary: const Color.fromARGB(255, 39, 89, 131),
+        inactiveColorPrimary: Color.fromARGB(255, 102, 100, 100),
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.add_circle_rounded),
+        title: ("Scan QR code"),
+        iconSize: 40,
+        activeColorPrimary: const Color.fromARGB(255, 39, 89, 131),
+        inactiveColorPrimary: Color.fromARGB(255, 102, 100, 100),
+        activeColorSecondary: Color.fromARGB(255, 255, 255, 255),
+        inactiveColorSecondary: Color.fromARGB(255, 255, 255, 255),
+      ),
+      PersistentBottomNavBarItem(
+        icon: Icon(Icons.list_rounded),
+        title: ("Pending tips"),
+        activeColorPrimary: const Color.fromARGB(255, 39, 89, 131),
+        inactiveColorPrimary: Color.fromARGB(255, 102, 100, 100),
+      ),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
-    var colorScheme = Theme.of(context).colorScheme;
-
-    Widget page;
-    switch (selectedIndexNavigationBar) {
-      case 0:
-        page = HomePage();
-        break;
-      case 1:
-        page = ScanWorkerPage();
-        break;
-      case 2:
-        page = TipsPendingPage();
-        break;
-      default:
-        throw UnimplementedError('No widget for $selectedIndexNavigationBar');
-    }
-
-    // The container for the current page, with its background color and subtle switching animation.
-    var mainArea = ColoredBox(
-      color: colorScheme.surfaceVariant,
-      child: AnimatedSwitcher(
-        duration: Duration(milliseconds: 0),
-        child: page,
-      ),
-    );
-
-    return SafeArea(
-      child: Scaffold(
-        body: LayoutBuilder(
-          builder: (context, constraints) {
-            return Column(
-              children: [
-                Expanded(child: mainArea),
-                SafeArea(
-                  child: BottomNavigationBar(
-                    items: [
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.home_filled),
-                        label: 'Home',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.add_circle_rounded),
-                        label: 'Scan QR code',
-                      ),
-                      BottomNavigationBarItem(
-                        icon: Icon(Icons.list_rounded),
-                        label: 'Pending tips',
-                      ),
-                    ],
-                    currentIndex: selectedIndexNavigationBar,
-                    onTap: (value) {
-                      setState(() {
-                        selectedIndexNavigationBar = value;
-                      });
-                    },
-                    type: BottomNavigationBarType.fixed,
-                  ),
-                )
-              ],
-            );
-          },
+    return Center(
+      child: PersistentTabView(
+        context,
+        controller: _controller,
+        screens: _navScreens(),
+        items: _navBarsItems(),
+        confineInSafeArea: true,
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        handleAndroidBackButtonPress: true,
+        resizeToAvoidBottomInset: true,
+        stateManagement: true,
+        hideNavigationBarWhenKeyboardShows: true,
+        decoration: NavBarDecoration(
+          borderRadius: BorderRadius.circular(0.0),
         ),
+        popAllScreensOnTapOfSelectedTab: true,
+        popActionScreens: PopActionScreensType.all,
+        itemAnimationProperties: ItemAnimationProperties(
+          // Navigation Bar's items animation properties.
+          duration: Duration(milliseconds: 200),
+          curve: Curves.ease,
+        ),
+        navBarStyle: NavBarStyle.style15,
       ),
     );
   }

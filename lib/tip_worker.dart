@@ -124,7 +124,9 @@ class TipWorkerPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
                     child: Text(
                       'Pay later',
                       style: Theme.of(context).textTheme.titleMedium,
