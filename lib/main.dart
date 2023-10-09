@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'home.dart';
 import 'scan_worker.dart';
-import 'tips_list.dart';
+import 'tips_pending.dart';
 
 void main() {
   runApp(MyApp());
@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
         page = ScanWorkerPage();
         break;
       case 2:
-        page = TipsListPage();
+        page = TipsPendingPage();
         break;
       default:
         throw UnimplementedError('No widget for $selectedIndexNavigationBar');
@@ -86,11 +86,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       BottomNavigationBarItem(
                         icon: Icon(Icons.add_circle_rounded),
-                        label: 'Scan',
+                        label: 'Scan QR code',
                       ),
                       BottomNavigationBarItem(
                         icon: Icon(Icons.list_rounded),
-                        label: 'Tips',
+                        label: 'Pending tips',
                       ),
                     ],
                     currentIndex: selectedIndexNavigationBar,

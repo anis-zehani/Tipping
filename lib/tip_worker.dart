@@ -18,7 +18,7 @@ class TipWorkerPage extends StatelessWidget {
             seedColor: const Color.fromARGB(255, 35, 75, 121)),
       ),
       home: Scaffold(
-        appBar: const AppBarPage(),
+        appBar: AppBarPage(title: 'Give a new tip'),
         drawer: const DrawerPage(),
         body: SingleChildScrollView(
           child: Column(
@@ -29,14 +29,35 @@ class TipWorkerPage extends StatelessWidget {
                 'Anis Zehani' /*qrCode*/,
                 style: TextStyle(
                     color: Color.fromARGB(255, 2, 2, 2),
-                    fontWeight: FontWeight.w400,
-                    fontSize: 18),
+                    fontWeight: FontWeight.w600,
+                    fontSize: 20),
               ),
-              const Image(
-                  width: 100,
-                  height: 40,
-                  image: NetworkImage(
-                      'https://www.pngmart.com/files/10/5-Stars-PNG-Clipart.png')),
+              const SizedBox(height: 15),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    '5.0 ',
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 2, 2, 2),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20),
+                  ),
+                  Image(
+                      width: 100,
+                      height: 30,
+                      image: NetworkImage(
+                          'https://www.pngmart.com/files/10/5-Stars-PNG-Clipart.png')),
+                  Text(
+                    ' (34 reviews)',
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 2, 2, 2),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 18),
+                  ),
+                ],
+              ),
               const SizedBox(height: 30),
               const CircleAvatar(
                 radius: 70,
@@ -66,10 +87,17 @@ class TipWorkerPage extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TextField(
+                        TextFormField(
+                          style: const TextStyle(
+                              height: 1,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 40,
+                              color: Color.fromARGB(255, 35, 75, 121)),
                           textAlign: TextAlign.center,
                           textAlignVertical: TextAlignVertical.center,
+                          initialValue: '0',
                           decoration: InputDecoration(
+                            hintText: '0',
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50.0)),
                             labelText: '',
@@ -110,7 +138,7 @@ class TipWorkerPage extends StatelessWidget {
                     ),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),

@@ -1,7 +1,10 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 class AppBarPage extends StatelessWidget implements PreferredSizeWidget {
-  const AppBarPage({Key? key}) : super(key: key);
+  String title = 'US Tipping';
+  AppBarPage({super.key, required this.title});
 
   final Color backgroundColor = const Color.fromARGB(255, 255, 255, 255);
 
@@ -9,9 +12,9 @@ class AppBarPage extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: const Color.fromARGB(255, 39, 89, 131),
-      title: const Text(
-        'US Tipping',
-        style: TextStyle(
+      title: Text(
+        title,
+        style: const TextStyle(
             color: Color.fromARGB(255, 255, 255, 255),
             fontWeight: FontWeight.w600,
             fontSize: 16),

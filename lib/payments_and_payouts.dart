@@ -16,17 +16,79 @@ class PaymentsAndPayoutsPage extends StatelessWidget {
             seedColor: const Color.fromARGB(255, 35, 75, 121)),
       ),
       home: Scaffold(
-        appBar: const AppBarPage(),
+        appBar: AppBarPage(title: 'Payments & payouts'),
         drawer: const DrawerPage(),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Text(
-                'Payments & payouts',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-            ],
+        body: const SingleChildScrollView(
+          padding: EdgeInsets.all(8),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(height: 50),
+                Row(
+                  children: [
+                    Text(
+                      'Giving tips',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 2, 2, 2),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 30),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(Icons.payment),
+                    Text(
+                      'Payments methods',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 2, 2, 2),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 18),
+                    ),
+                    Icon(Icons.chevron_right),
+                  ],
+                ),
+                SizedBox(height: 200),
+                Divider(
+                  height: 20,
+                  thickness: 1,
+                  indent: 0,
+                  endIndent: 0,
+                  color: Colors.black,
+                ),
+                SizedBox(height: 50),
+                Row(
+                  children: [
+                    Text(
+                      'Receiving tips',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 2, 2, 2),
+                          fontWeight: FontWeight.w600,
+                          fontSize: 20),
+                    ),
+                  ],
+                ),
+                SizedBox(height: 30),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(Icons.account_balance),
+                    Text(
+                      'Payout methods',
+                      style: TextStyle(
+                          color: Color.fromARGB(255, 2, 2, 2),
+                          fontWeight: FontWeight.w400,
+                          fontSize: 18),
+                    ),
+                    Icon(Icons.chevron_right),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

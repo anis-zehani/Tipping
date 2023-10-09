@@ -16,7 +16,7 @@ class LogoutPage extends StatelessWidget {
             seedColor: const Color.fromARGB(255, 35, 75, 121)),
       ),
       home: Scaffold(
-        appBar: const AppBarPage(),
+        appBar: AppBarPage(title: 'Logout'),
         drawer: const DrawerPage(),
         body: Center(
           child: Column(

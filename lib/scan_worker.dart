@@ -20,12 +20,13 @@ class ScanWorkerPage extends StatelessWidget {
             seedColor: const Color.fromARGB(255, 35, 75, 121)),
       ),
       home: Scaffold(
-        appBar: const AppBarPage(),
+        appBar: AppBarPage(title: 'Scan a worker'),
         drawer: const DrawerPage(),
         body: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
+              const SizedBox(height: 50),
               const Text(
                 'Scan a worker\'s QR code',
                 style: TextStyle(
@@ -42,6 +43,7 @@ class ScanWorkerPage extends StatelessWidget {
                   ));
                 },
               ),
+              const SizedBox(height: 100),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
@@ -93,7 +95,7 @@ class _QRViewTippingState extends State<QRViewTipping> {
             seedColor: const Color.fromARGB(255, 35, 75, 121)),
       ),
       home: Scaffold(
-        appBar: const AppBarPage(),
+        appBar: AppBarPage(title: 'QR Code Scanner'),
         drawer: const DrawerPage(),
         body: Column(
           children: <Widget>[
