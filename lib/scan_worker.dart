@@ -27,24 +27,16 @@ class ScanWorkerPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               const SizedBox(height: 100),
-              /*const Text(
-                'Tap to scan a worker\'s QR code',
-                style: TextStyle(
-                    color: Color.fromARGB(255, 2, 2, 2),
-                    fontWeight: FontWeight.w600,
-                    fontSize: 20),
-              ),*/
-              const SizedBox(height: 50),
               IconButton(
                 iconSize: 400.0,
-                icon: const Icon(Icons.qr_code_2),
+                icon: const Icon(Icons.qr_code_2_sharp),
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => const QRViewTipping(),
                   ));
                 },
               ),
-              //const SizedBox(height: 100),
+              const SizedBox(height: 50),
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
