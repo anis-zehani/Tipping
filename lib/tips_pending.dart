@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'app_bar.dart';
 import 'drawer.dart';
 import 'model/tip.dart';
+import 'tip_worker.dart';
 
 class TipsPendingPage extends StatefulWidget {
   const TipsPendingPage({Key? key}) : super(key: key);
@@ -97,9 +98,18 @@ class _TipsPendingPageState extends State<TipsPendingPage> {
                       trailing: IconButton(
                         iconSize: 40,
                         icon: const Icon(Icons.arrow_circle_right_outlined),
-                        color: const Color.fromARGB(255, 202, 136, 49),
-                        highlightColor: const Color.fromARGB(255, 139, 85, 23),
-                        onPressed: () {},
+                        color: const Color.fromARGB(255, 202, 72, 49),
+                        highlightColor: const Color.fromARGB(255, 202, 72, 49),
+                        onPressed: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => TipWorkerPage(
+                                  qrCode: '',
+                                  workerName: tips[index].workerName,
+                                  imageUrl: tips[index].imageUrl),
+                            ),
+                          );
+                        },
                       ),
                     );
                   },

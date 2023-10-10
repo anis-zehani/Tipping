@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -6,7 +8,15 @@ import 'drawer.dart';
 
 class TipWorkerPage extends StatefulWidget {
   final String qrCode;
-  const TipWorkerPage({super.key, required this.qrCode});
+  String workerName = 'Anis Zehani';
+  String imageUrl =
+      'https://pbs.twimg.com/profile_images/1630389794806157313/AFcZmyjf_400x400.jpg';
+
+  TipWorkerPage(
+      {super.key,
+      required this.qrCode,
+      required this.workerName,
+      required this.imageUrl});
 
   @override
   State<TipWorkerPage> createState() => _TipWorkerPageState();
@@ -38,9 +48,9 @@ class _TipWorkerPageState extends State<TipWorkerPage> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
               const SizedBox(height: 50),
-              const Text(
-                'Anis Zehani' /*qrCode*/,
-                style: TextStyle(
+              Text(
+                widget.workerName /*widget.qrCode*/,
+                style: const TextStyle(
                     color: Color.fromARGB(255, 2, 2, 2),
                     fontWeight: FontWeight.w600,
                     fontSize: 20),
@@ -72,10 +82,9 @@ class _TipWorkerPageState extends State<TipWorkerPage> {
                 ],
               ),
               const SizedBox(height: 30),
-              const CircleAvatar(
+              CircleAvatar(
                 radius: 70,
-                backgroundImage: NetworkImage(
-                    'https://pbs.twimg.com/profile_images/1630389794806157313/AFcZmyjf_400x400.jpg'),
+                backgroundImage: NetworkImage(widget.imageUrl),
               ),
               const SizedBox(height: 30),
               const Text(
@@ -160,17 +169,43 @@ class _TipWorkerPageState extends State<TipWorkerPage> {
                         Widget cancelButton = ElevatedButton(
                           child: const Text("Cancel"),
                           onPressed: () {
-                            //Navigator.of(context).pop();
+                            Navigator.of(context, rootNavigator: true)
+                                .pop('alert1');
                           },
                         );
                         Widget continueButton = ElevatedButton(
                           child: const Text("Continue"),
                           onPressed: () {
-                            //Navigator.of(context).pop();
+                            Widget okButton = ElevatedButton(
+                              child: const Text("OK"),
+                              onPressed: () {
+                                Navigator.of(context, rootNavigator: true)
+                                    .pop('alert3');
+
+                                myController.text = (0).toStringAsFixed(1);
+                                Navigator.of(context, rootNavigator: true)
+                                    .pop();
+                              },
+                            );
+                            // set up the AlertDialog
+                            AlertDialog alert3 = AlertDialog(
+                              title: const Text("Thank you"),
+                              content: const Text(
+                                  "Thank you, your payment was successful"),
+                              actions: [
+                                okButton,
+                              ],
+                            );
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return alert3;
+                              },
+                            );
                           },
                         );
                         // set up the AlertDialog
-                        AlertDialog alert = AlertDialog(
+                        AlertDialog alert1 = AlertDialog(
                           title: const Text("Confirmation"),
                           content: Text(
                               'You will pay ${myController.text} \$, do you confirm ?'),
@@ -182,18 +217,19 @@ class _TipWorkerPageState extends State<TipWorkerPage> {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
-                            return alert;
+                            return alert1;
                           },
                         );
                       } else {
                         Widget okButton = ElevatedButton(
                           child: const Text("OK"),
                           onPressed: () {
-                            //Navigator.of(context).pop();
+                            Navigator.of(context, rootNavigator: true)
+                                .pop('alert2');
                           },
                         );
                         // set up the AlertDialog
-                        AlertDialog alert = AlertDialog(
+                        AlertDialog alert2 = AlertDialog(
                           title: const Text("Error"),
                           content: const Text(
                               "Please enter an amount greater than zero"),
@@ -204,7 +240,7 @@ class _TipWorkerPageState extends State<TipWorkerPage> {
                         showDialog(
                           context: context,
                           builder: (BuildContext context) {
-                            return alert;
+                            return alert2;
                           },
                         );
                       }

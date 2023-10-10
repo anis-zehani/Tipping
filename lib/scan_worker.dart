@@ -182,10 +182,12 @@ class _QRViewTippingState extends State<QRViewTipping> {
       });
 
       Navigator.pushReplacement(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => TipWorkerPage(qrCode: qrCode)))
-          .then((value) => controller.resumeCamera());
+          context,
+          MaterialPageRoute(
+              builder: (context) => TipWorkerPage(
+                  qrCode: qrCode,
+                  workerName: '',
+                  imageUrl: ''))).then((value) => controller.resumeCamera());
     });
   }
 
