@@ -98,8 +98,8 @@ class _TipsPendingPageState extends State<TipsPendingPage> {
                       trailing: IconButton(
                         iconSize: 40,
                         icon: const Icon(Icons.arrow_circle_right_outlined),
-                        color: const Color.fromARGB(255, 202, 72, 49),
-                        highlightColor: const Color.fromARGB(255, 202, 72, 49),
+                        color: const Color.fromARGB(255, 39, 89, 131),
+                        highlightColor: const Color.fromARGB(255, 39, 89, 131),
                         onPressed: () {
                           Navigator.of(context).push(
                             MaterialPageRoute(
