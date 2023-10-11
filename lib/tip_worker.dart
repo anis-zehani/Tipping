@@ -127,7 +127,7 @@ class _TipWorkerPageState extends State<TipWorkerPage> {
                             hintText: '0',
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(50.0)),
-                            labelText: '',
+                            labelText: '\$',
                           ),
                           keyboardType: TextInputType.number,
                           inputFormatters: [
@@ -158,7 +158,7 @@ class _TipWorkerPageState extends State<TipWorkerPage> {
                       Navigator.pop(context);
                     },
                     child: Text(
-                      'Pay later',
+                      'Tip later',
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ),
@@ -246,7 +246,7 @@ class _TipWorkerPageState extends State<TipWorkerPage> {
                       }
                     },
                     child: Text(
-                      'Pay now',
+                      'Tip now',
                       style: Theme.of(context).textTheme.titleMedium,
                     ),
                   ),

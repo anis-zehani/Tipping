@@ -15,13 +15,13 @@ class TipsPendingPage extends StatefulWidget {
 class _TipsPendingPageState extends State<TipsPendingPage> {
   List<Tip> tips = <Tip>[
     Tip(
-        workerName: 'Nedra Kharbeche',
+        workerName: 'Jane Doe',
         tipAmount: 5,
         imageUrl:
             'https://pbs.twimg.com/profile_images/1420125322545143808/FORGeaRH_400x400.jpg',
         dateCreated: '10/01/2023 at 09:01'),
     Tip(
-        workerName: 'Anis Zehani',
+        workerName: 'John Doe',
         tipAmount: 2,
         imageUrl:
             'https://pbs.twimg.com/profile_images/1630389794806157313/AFcZmyjf_400x400.jpg',
