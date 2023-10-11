@@ -182,12 +182,14 @@ class _QRViewTippingState extends State<QRViewTipping> {
       });
 
       Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) => TipWorkerPage(
-                  qrCode: qrCode,
-                  workerName: '',
-                  imageUrl: ''))).then((value) => controller.resumeCamera());
+              context,
+              MaterialPageRoute(
+                  builder: (context) => TipWorkerPage(
+                      qrCode: qrCode,
+                      workerName: 'Anis Zehani',
+                      imageUrl:
+                          'https://pbs.twimg.com/profile_images/1630389794806157313/AFcZmyjf_400x400.jpg')))
+          .then((value) => controller.resumeCamera());
     });
   }
 

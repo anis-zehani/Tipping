@@ -63,14 +63,14 @@ class _MyHomePageState extends State<MyHomePage> {
       PersistentBottomNavBarItem(
         icon: Icon(Icons.home_filled),
         title: ("Home"),
-        activeColorPrimary: const Color.fromARGB(255, 39, 89, 131),
+        activeColorPrimary: const Color.fromARGB(255, 0, 74, 172),
         inactiveColorPrimary: Color.fromARGB(255, 102, 100, 100),
       ),
       PersistentBottomNavBarItem(
         icon: Icon(Icons.add_circle_rounded),
         title: ("Scan QR code"),
         iconSize: 40,
-        activeColorPrimary: const Color.fromARGB(255, 39, 89, 131),
+        activeColorPrimary: const Color.fromARGB(255, 0, 74, 172),
         inactiveColorPrimary: Color.fromARGB(255, 102, 100, 100),
         activeColorSecondary: Color.fromARGB(255, 255, 255, 255),
         inactiveColorSecondary: Color.fromARGB(255, 255, 255, 255),
@@ -78,7 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
       PersistentBottomNavBarItem(
         icon: Icon(Icons.list_rounded),
         title: ("Pending tips"),
-        activeColorPrimary: const Color.fromARGB(255, 39, 89, 131),
+        activeColorPrimary: const Color.fromARGB(255, 0, 74, 172),
         inactiveColorPrimary: Color.fromARGB(255, 102, 100, 100),
       ),
     ];
